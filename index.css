@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+
+  --color-warm-ivory: #FFF9F3;
+  --color-champagne: #EADCCB;
+  --color-soft-blush: #F2D8D8;
+  --color-dusty-rose: #C98F9B;
+  --color-deep-brown: #493A37;
+  --color-muted-gold: #C5A46D;
+  --color-warm-white: #FFFFFF;
+}
+
+@layer base {
+  * {
+    border-color: #EADCCB;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #FFF9F3;
+    color: #493A37;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+/* 3D Card Perspective */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.perspective-800 {
+  perspective: 800px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Subtle Shimmer & Glow Animations */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #493A37 0%,
+    #C5A46D 25%,
+    #C98F9B 50%,
+    #C5A46D 75%,
+    #493A37 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerGlow 8s linear infinite;
+}
+
+/* Custom Scrollbar for gallery & modal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EADCCB;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C98F9B;
+}
